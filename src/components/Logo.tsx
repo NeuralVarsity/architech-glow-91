@@ -15,7 +15,7 @@ export function Logo({ compact = false }: { compact?: boolean }) {
         }}
       />
       {!compact && (
-        <span className="leading-none whitespace-nowrap">
+        <span className="hidden leading-none whitespace-nowrap sm:block xl:hidden 2xl:block">
           <span className="block font-display text-lg font-bold tracking-[0.18em] text-offwhite">HNR INFRA</span>
           <span className="mt-1 block text-[9px] tracking-[0.34em] text-gold/80">BUILDING TOMORROW</span>
         </span>
