@@ -28,7 +28,7 @@ export function Navbar() {
       }`}
     >
       <nav className="mx-auto grid w-full max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-3.5 sm:px-8">
-        <div className="min-w-0">
+        <div className="min-w-0 overflow-hidden">
           <Logo />
         </div>
 
