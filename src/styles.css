@@ -19,6 +19,15 @@
  */
 
 @theme inline {
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-burgundy: var(--burgundy);
+  --color-maroon: var(--maroon);
+  --color-charcoal: var(--charcoal);
+  --color-offwhite: var(--offwhite);
+  --color-beige: var(--beige);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -62,26 +71,42 @@
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
+  --radius: 0.25rem;
+  /* HNR Infra brand */
+  --background: oklch(0.16 0.004 60);
+  --foreground: oklch(0.972 0.006 90);
+  --card: oklch(0.21 0.008 40);
+  --card-foreground: oklch(0.972 0.006 90);
+  --popover: oklch(0.19 0.008 40);
+  --popover-foreground: oklch(0.972 0.006 90);
+  --primary: oklch(0.79 0.129 87);
+  --primary-foreground: oklch(0.16 0.004 60);
+  --secondary: oklch(0.33 0.093 19);
+  --secondary-foreground: oklch(0.972 0.006 90);
+  --muted: oklch(0.26 0.01 45);
+  --muted-foreground: oklch(0.74 0.015 80);
+  --accent: oklch(0.41 0.117 22);
+  --accent-foreground: oklch(0.972 0.006 90);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --border: oklch(0.32 0.012 60 / 60%);
+  --input: oklch(0.32 0.012 60 / 70%);
+  --ring: oklch(0.79 0.129 87);
+
+  --gold: oklch(0.79 0.129 87);
+  --gold-soft: oklch(0.88 0.09 90);
+  --burgundy: oklch(0.33 0.093 19);
+  --maroon: oklch(0.41 0.117 22);
+  --charcoal: oklch(0.16 0.004 60);
+  --offwhite: oklch(0.972 0.006 90);
+  --beige: oklch(0.926 0.019 85);
+
+  --gradient-gold: linear-gradient(135deg, oklch(0.72 0.12 80), oklch(0.9 0.1 92), oklch(0.72 0.12 80));
+  --gradient-maroon: linear-gradient(140deg, oklch(0.33 0.093 19), oklch(0.2 0.05 20));
+  --gradient-veil: linear-gradient(to top, oklch(0.14 0.004 60) 4%, oklch(0.14 0.004 60 / 0.2) 55%, transparent);
+  --shadow-luxe: 0 30px 70px -30px oklch(0 0 0 / 0.85);
+  --shadow-gold: 0 0 0 1px color-mix(in oklab, var(--gold) 45%, transparent), 0 24px 60px -24px color-mix(in oklab, var(--gold) 45%, transparent);
+  --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -141,4 +166,106 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
   }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.015em;
+  }
+  ::selection {
+    background: color-mix(in oklab, var(--gold) 45%, transparent);
+    color: var(--offwhite);
+  }
+  ::-webkit-scrollbar {
+    width: 9px;
+  }
+  ::-webkit-scrollbar-track {
+    background: oklch(0.13 0.004 60);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in oklab, var(--gold) 55%, transparent);
+    border-radius: 99px;
+  }
+}
+
+@utility text-gold-gradient {
+  background: var(--gradient-gold);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@utility eyebrow {
+  font-size: 0.6875rem;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+}
+
+@utility glass-panel {
+  background: color-mix(in oklab, var(--card) 55%, transparent);
+  backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid color-mix(in oklab, var(--gold) 18%, transparent);
+}
+
+@utility gold-rule {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    color-mix(in oklab, var(--gold) 70%, transparent),
+    transparent
+  );
+}
+
+@utility hover-lift {
+  transition:
+    transform 0.5s var(--ease-luxe),
+    box-shadow 0.5s var(--ease-luxe);
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-gold);
+  }
+}
+
+@utility grid-arch {
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, var(--gold) 9%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--gold) 9%, transparent) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+@keyframes hnr-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes hnr-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@utility animate-float {
+  animation: hnr-float 7s ease-in-out infinite;
 }
