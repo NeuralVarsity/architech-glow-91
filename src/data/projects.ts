@@ -15,6 +15,9 @@ export type Project = {
   category: "Residential" | "Commercial" | "Mixed-Use";
   image: string;
   blurb: string;
+  /** Investment highlight shown on the luxury catalogue rail. */
+  highlight?: string;
+  metrics?: { label: string; value: string }[];
 };
 
 export const projects: Project[] = [
@@ -28,6 +31,12 @@ export const projects: Project[] = [
     category: "Residential",
     image: p1,
     blurb: "Forty-two storeys of sky-framed living with private lift lobbies and a cantilevered sky deck.",
+    highlight: "Projected 8.4% rental yield",
+    metrics: [
+      { label: "Storeys", value: "42" },
+      { label: "Units", value: "168" },
+      { label: "Possession", value: "2027" },
+    ],
   },
   {
     id: "grand-towers",
@@ -39,6 +48,12 @@ export const projects: Project[] = [
     category: "Mixed-Use",
     image: p2,
     blurb: "Twin landmark towers joined by a glass sky bridge, anchoring the city's new financial skyline.",
+    highlight: "100% sold at launch",
+    metrics: [
+      { label: "Towers", value: "2" },
+      { label: "Sq.ft", value: "1.1M" },
+      { label: "Delivered", value: "2023" },
+    ],
   },
   {
     id: "elite-business-park",
@@ -50,6 +65,12 @@ export const projects: Project[] = [
     category: "Commercial",
     image: p3,
     blurb: "A LEED Gold campus designed for global occupiers, with landscaped courts and column-free floors.",
+    highlight: "LEED Gold · 96% leased",
+    metrics: [
+      { label: "Leasable", value: "480K" },
+      { label: "Occupiers", value: "14" },
+      { label: "Parking", value: "1,800" },
+    ],
   },
   {
     id: "imperial-heights",
@@ -61,6 +82,12 @@ export const projects: Project[] = [
     category: "Residential",
     image: p4,
     blurb: "Limited-edition sky mansions with hand-finished stonework and a private concierge floor.",
+    highlight: "Only 24 residences",
+    metrics: [
+      { label: "Residences", value: "24" },
+      { label: "Per floor", value: "1" },
+      { label: "Possession", value: "2028" },
+    ],
   },
   {
     id: "golden-avenue",
@@ -72,6 +99,12 @@ export const projects: Project[] = [
     category: "Mixed-Use",
     image: p5,
     blurb: "A boulevard of luxury retail, curated dining and residences above — the city's promenade address.",
+    highlight: "Pre-launch pricing open",
+    metrics: [
+      { label: "Retail", value: "120K" },
+      { label: "Residences", value: "96" },
+      { label: "Launch", value: "2026" },
+    ],
   },
   {
     id: "urban-vista",
@@ -83,5 +116,11 @@ export const projects: Project[] = [
     category: "Residential",
     image: p6,
     blurb: "Terraced residences wrapped in vertical gardens, with a two-acre central green at its heart.",
+    highlight: "Two-acre central green",
+    metrics: [
+      { label: "Acres", value: "6.2" },
+      { label: "Units", value: "310" },
+      { label: "Possession", value: "2027" },
+    ],
   },
 ];
