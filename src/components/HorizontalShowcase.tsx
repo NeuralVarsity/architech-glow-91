@@ -77,7 +77,7 @@ export function HorizontalShowcase() {
           {projects.map((p, i) => (
             <article
               key={p.id}
-              className="group relative flex h-[440px] w-[82vw] shrink-0 snap-start flex-col overflow-hidden rounded-sm border border-gold/15 bg-charcoal/60 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-2 hover:border-gold/45 hover:shadow-[0_28px_70px_-30px_oklch(0.79_0.129_87/0.45)] sm:h-[470px] sm:w-[calc((100%-2rem)/2)] lg:h-[500px] lg:w-[calc((100vw-9.5rem)/3)]"
+              className="group relative flex h-[440px] w-[82vw] shrink-0 snap-start flex-col overflow-hidden rounded-sm border border-gold/15 bg-charcoal/60 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-2 hover:border-gold/45 hover:shadow-[0_28px_70px_-30px_oklch(0.79_0.129_87/0.45)] sm:h-[470px] sm:w-[calc((100%-2rem)/2)] lg:h-[500px] lg:w-[calc((100vw-10rem)/3)]"
             >
               {/* Image — the focal point (~63% of card) */}
               <div className="relative h-[63%] shrink-0 overflow-hidden">
