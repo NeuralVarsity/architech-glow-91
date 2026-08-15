@@ -12,6 +12,9 @@ import { GalleryGrid } from "@/components/GalleryGrid";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 import { TimelineSection } from "@/components/TimelineSection";
 import { CTABand } from "@/components/CTABand";
+import { LuxuryMetrics } from "@/components/LuxuryMetrics";
+import { HorizontalShowcase } from "@/components/HorizontalShowcase";
+import { SectionDivider } from "@/components/SectionDivider";
 import { LazyScene } from "@/components/three/LazyScene";
 import { projects } from "@/data/projects";
 import { stats } from "@/data/content";
@@ -40,6 +43,8 @@ function Index() {
   return (
     <>
       <Hero />
+
+      <LuxuryMetrics />
 
       <Section id="about">
         <div className="grid gap-14 lg:grid-cols-[1fr_0.85fr] lg:items-center">
@@ -87,7 +92,12 @@ function Index() {
         </div>
       </Section>
 
-      <Section className="bg-[oklch(0.14_0.004_60)]">
+      <SectionDivider />
+
+      <HorizontalShowcase />
+
+      <Section className="relative bg-[oklch(0.14_0.004_60)]">
+        <div className="pointer-events-none absolute inset-0 blueprint opacity-25" />
         <SectionHeading
           eyebrow="Featured Projects"
           title={<>Six addresses. One uncompromising <span className="text-gold-gradient">standard</span>.</>}
@@ -111,6 +121,8 @@ function Index() {
 
       <section className="relative overflow-hidden border-y border-gold/15 bg-[oklch(0.12_0.004_60)]">
         <div className="grid-arch absolute inset-0 opacity-40" />
+        <div className="pointer-events-none absolute inset-0 aurora opacity-50" />
+        <div className="pointer-events-none absolute inset-0 noise-overlay" />
         <div className="relative mx-auto grid w-full max-w-7xl gap-10 px-5 py-20 sm:px-8 lg:grid-cols-2 lg:items-center lg:py-24">
           <Reveal direction="left">
             <p className="eyebrow">3D Architecture Showcase</p>

@@ -84,6 +84,7 @@ export const testimonials = [
   {
     name: "Arjun Mehta",
     role: "Managing Director, Vertex Capital",
+    property: "Elite Business Park · Full Floor",
     quote:
       "We leased an entire floor at Elite Business Park. The build quality and handover discipline are on par with anything I've seen internationally.",
     initials: "AM",
@@ -91,6 +92,7 @@ export const testimonials = [
   {
     name: "Priya Nair",
     role: "Homeowner, Sky Residences",
+    property: "HNR Sky Residences · 3 BHK",
     quote:
       "From the first site visit to the keys, everything was documented and on time. The apartment feels even better than the show unit.",
     initials: "PN",
@@ -98,6 +100,7 @@ export const testimonials = [
   {
     name: "Rahul Deshpande",
     role: "Private Investor",
+    property: "HNR Grand Towers · 2 Units",
     quote:
       "Three assets with HNR over eight years. Their location calls have consistently outperformed the market average.",
     initials: "RD",
@@ -105,6 +108,7 @@ export const testimonials = [
   {
     name: "Sneha Rao",
     role: "Director, Aureus Realty Fund",
+    property: "HNR Business Bay · Portfolio",
     quote:
       "Transparent cost sheets and monthly progress reporting made underwriting straightforward. A rare partner in this market.",
     initials: "SR",
@@ -112,6 +116,7 @@ export const testimonials = [
   {
     name: "Vikram Shetty",
     role: "Homeowner, Imperial Heights",
+    property: "Imperial Heights · Sky Mansion",
     quote:
       "The detailing — stone, joinery, lighting — is genuinely luxury grade. It changed what I expect from an Indian developer.",
     initials: "VS",
