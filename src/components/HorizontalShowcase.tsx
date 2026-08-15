@@ -72,57 +72,65 @@ export function HorizontalShowcase() {
 
         <div
           ref={track}
-          className="mt-10 flex gap-6 overflow-x-auto px-5 pb-4 sm:px-8 lg:overflow-visible lg:pb-0"
+          className="mt-10 flex snap-x snap-mandatory gap-6 overflow-x-auto px-5 pb-4 sm:gap-8 sm:px-8 lg:gap-10 lg:overflow-visible lg:pb-0"
         >
           {projects.map((p, i) => (
             <article
               key={p.id}
-              className="group relative h-[460px] w-[78vw] shrink-0 overflow-hidden rounded-sm border border-gold/15 zoom-cinematic sm:w-[440px] lg:h-[520px] lg:w-[560px]"
+              className="group relative flex h-[470px] w-[82vw] shrink-0 snap-start flex-col overflow-hidden rounded-sm border border-gold/15 bg-charcoal/60 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-2 hover:border-gold/45 hover:shadow-[0_28px_70px_-30px_oklch(0.79_0.129_87/0.45)] sm:h-[470px] sm:w-[calc((100%-2rem)/2)] lg:h-[500px] lg:w-[calc((100vw-10rem)/3)]"
             >
-              <img
-                src={p.image}
-                alt={p.name}
-                loading="lazy"
-                className="size-full object-cover"
-              />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/35 to-transparent" />
-              <span className="absolute top-5 left-5 font-display text-sm text-gold/70">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              {p.highlight && (
-                <span className="luxe-glass absolute top-5 right-5 rounded-sm px-3 py-1.5 text-[10px] tracking-[0.2em] text-gold uppercase">
-                  {p.highlight}
+              {/* Image — the focal point (~63% of card) */}
+              <div className="relative h-[56%] shrink-0 overflow-hidden sm:h-[62%]">
+                <img
+                  src={p.image}
+                  alt={p.name}
+                  loading="lazy"
+                  className="size-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/10 to-transparent" />
+                <span className="absolute top-4 left-5 font-display text-sm text-gold/70">
+                  {String(i + 1).padStart(2, "0")}
                 </span>
-              )}
-              <div className="absolute inset-x-4 bottom-4">
-                <div className="luxe-glass rounded-sm p-6 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1.5">
-                  <p className="text-[10px] tracking-[0.3em] text-gold uppercase">
+                {p.highlight && (
+                  <span className="luxe-glass absolute top-4 right-4 max-w-[70%] truncate rounded-sm px-2.5 py-1 text-[9px] tracking-[0.18em] text-gold uppercase">
+                    {p.highlight}
+                  </span>
+                )}
+              </div>
+
+              {/* Compact editorial information panel */}
+              <div className="flex min-h-0 flex-1 flex-col justify-between px-5 pt-4 pb-5">
+                <div className="min-w-0">
+                  <p className="text-[9px] tracking-[0.28em] text-gold/85 uppercase">
                     {p.category} · {p.status}
                   </p>
-                  <h3 className="mt-2 font-display text-2xl text-offwhite">{p.name}</h3>
-                  <p className="mt-1 text-xs tracking-[0.14em] text-muted-foreground uppercase">{p.location}</p>
+                  <h3 className="mt-1.5 truncate font-display text-xl leading-tight text-offwhite">
+                    {p.name}
+                  </h3>
+                  <p className="mt-1 truncate text-[10px] tracking-[0.16em] text-muted-foreground/80 uppercase">
+                    {p.location}
+                  </p>
                   {p.metrics && (
-                    <dl className="mt-5 grid grid-cols-3 gap-px overflow-hidden rounded-sm bg-gold/15">
-                      {p.metrics.map((m) => (
-                        <div key={m.label} className="bg-charcoal/70 px-2 py-3 text-center">
-                          <dt className="sr-only">{m.label}</dt>
-                          <dd className="font-display text-lg text-gold">{m.value}</dd>
-                          <p className="mt-1 text-[9px] tracking-[0.18em] text-muted-foreground uppercase">
-                            {m.label}
-                          </p>
-                        </div>
+                    <p className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-[10px] tracking-[0.12em] text-offwhite/70 uppercase">
+                      {p.metrics.map((m, mi) => (
+                        <span key={m.label} className="flex items-center gap-2">
+                          {mi > 0 && <span className="text-gold/40">•</span>}
+                          <span>
+                            <span className="text-gold">{m.value}</span> {m.label}
+                          </span>
+                        </span>
                       ))}
-                    </dl>
+                    </p>
                   )}
-                  <div className="mt-5 flex items-center justify-between gap-4">
-                    <span className="font-display text-sm text-offwhite/85">{p.price}</span>
-                    <Link
-                      to="/projects"
-                      className="link-underline inline-flex items-center gap-2 text-[11px] tracking-[0.22em] text-gold uppercase"
-                    >
-                      View project <ArrowUpRight className="size-3.5" />
-                    </Link>
-                  </div>
+                </div>
+                <div className="mt-4 flex items-center justify-between gap-3 border-t border-gold/15 pt-3">
+                  <span className="font-display text-sm text-offwhite/85">{p.price}</span>
+                  <Link
+                    to="/projects"
+                    className="link-underline inline-flex shrink-0 items-center gap-1.5 text-[10px] tracking-[0.2em] text-gold uppercase"
+                  >
+                    View <ArrowUpRight className="size-3.5" />
+                  </Link>
                 </div>
               </div>
             </article>
