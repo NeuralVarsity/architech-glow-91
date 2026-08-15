@@ -80,6 +80,12 @@ export const timeline = [
   { year: "2025", title: "National Expansion", text: "Operations extend to Bengaluru, Pune and Chennai with a 5 million sq.ft pipeline." },
 ];
 
+import c1 from "@/assets/client-1.jpg";
+import c2 from "@/assets/client-2.jpg";
+import c3 from "@/assets/client-3.jpg";
+import c4 from "@/assets/client-4.jpg";
+import c5 from "@/assets/client-5.jpg";
+
 export const testimonials = [
   {
     name: "Arjun Mehta",
@@ -88,6 +94,7 @@ export const testimonials = [
     quote:
       "We leased an entire floor at Elite Business Park. The build quality and handover discipline are on par with anything I've seen internationally.",
     initials: "AM",
+    portrait: c1,
   },
   {
     name: "Priya Nair",
@@ -96,6 +103,7 @@ export const testimonials = [
     quote:
       "From the first site visit to the keys, everything was documented and on time. The apartment feels even better than the show unit.",
     initials: "PN",
+    portrait: c2,
   },
   {
     name: "Rahul Deshpande",
@@ -104,6 +112,7 @@ export const testimonials = [
     quote:
       "Three assets with HNR over eight years. Their location calls have consistently outperformed the market average.",
     initials: "RD",
+    portrait: c3,
   },
   {
     name: "Sneha Rao",
@@ -112,6 +121,7 @@ export const testimonials = [
     quote:
       "Transparent cost sheets and monthly progress reporting made underwriting straightforward. A rare partner in this market.",
     initials: "SR",
+    portrait: c4,
   },
   {
     name: "Vikram Shetty",
@@ -120,6 +130,7 @@ export const testimonials = [
     quote:
       "The detailing — stone, joinery, lighting — is genuinely luxury grade. It changed what I expect from an Indian developer.",
     initials: "VS",
+    portrait: c5,
   },
 ];
 

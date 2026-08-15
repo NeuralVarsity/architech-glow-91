@@ -12,6 +12,7 @@ import { GalleryGrid } from "@/components/GalleryGrid";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 import { TimelineSection } from "@/components/TimelineSection";
 import { CTABand } from "@/components/CTABand";
+import { BuildingTomorrow } from "@/components/BuildingTomorrow";
 import { LuxuryMetrics } from "@/components/LuxuryMetrics";
 import { HorizontalShowcase } from "@/components/HorizontalShowcase";
 import { SectionDivider } from "@/components/SectionDivider";
@@ -94,10 +95,13 @@ function Index() {
 
       <SectionDivider />
 
+      <BuildingTomorrow />
+
       <HorizontalShowcase />
 
-      <Section className="relative bg-[oklch(0.14_0.004_60)]">
-        <div className="pointer-events-none absolute inset-0 blueprint opacity-25" />
+      <Section className="luxe-surface-alt relative isolate overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 -z-10 blueprint opacity-20" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-64 spotlight" />
         <SectionHeading
           eyebrow="Featured Projects"
           title={<>Six addresses. One uncompromising <span className="text-gold-gradient">standard</span>.</>}
@@ -110,7 +114,8 @@ function Index() {
         </div>
       </Section>
 
-      <Section>
+      <Section className="luxe-surface relative isolate overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 -z-10 grid-arch opacity-25" />
         <SectionHeading
           eyebrow="Why Choose HNR Infra"
           title={<>The difference is in what you cannot see.</>}
@@ -119,7 +124,7 @@ function Index() {
         <WhyChoose />
       </Section>
 
-      <section className="relative overflow-hidden border-y border-gold/15 bg-[oklch(0.12_0.004_60)]">
+      <section className="luxe-surface-alt relative overflow-hidden border-y border-gold/15">
         <div className="grid-arch absolute inset-0 opacity-40" />
         <div className="pointer-events-none absolute inset-0 aurora opacity-50" />
         <div className="pointer-events-none absolute inset-0 noise-overlay" />
@@ -147,7 +152,8 @@ function Index() {
         </div>
       </section>
 
-      <Section>
+      <Section className="luxe-surface relative isolate overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 -z-10 blueprint opacity-15" />
         <SectionHeading
           eyebrow="Our Services"
           title={<>End-to-end, from land to <span className="text-gold-gradient">handover</span>.</>}
@@ -155,7 +161,8 @@ function Index() {
         <ServicesGrid />
       </Section>
 
-      <Section className="bg-[oklch(0.14_0.004_60)]">
+      <Section className="luxe-surface-alt relative isolate overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 -z-10 aurora opacity-40" />
         <SectionHeading eyebrow="Gallery" title="A closer look at the craft." align="center" />
         <GalleryGrid limit={6} />
         <Reveal className="mt-10 text-center">
@@ -168,7 +175,8 @@ function Index() {
         </Reveal>
       </Section>
 
-      <Section>
+      <Section className="luxe-surface relative isolate overflow-hidden">
+        <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-72 spotlight animate-breathe" />
         <SectionHeading
           eyebrow="Testimonials"
           title={<>Owners, investors and occupiers.</>}
