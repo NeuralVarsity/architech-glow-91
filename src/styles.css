@@ -269,3 +269,135 @@
 @utility animate-float {
   animation: hnr-float 7s ease-in-out infinite;
 }
+
+/* ---------- Ultra-premium layer ---------- */
+
+@utility luxe-glass {
+  background: linear-gradient(
+    140deg,
+    color-mix(in oklab, var(--offwhite) 7%, transparent),
+    color-mix(in oklab, var(--card) 40%, transparent)
+  );
+  backdrop-filter: blur(22px) saturate(160%);
+  border: 1px solid color-mix(in oklab, var(--gold) 20%, transparent);
+  box-shadow:
+    inset 0 1px 0 color-mix(in oklab, var(--offwhite) 12%, transparent),
+    0 40px 80px -50px oklch(0 0 0 / 0.9);
+}
+
+@utility blueprint {
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, var(--gold) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--gold) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(to right, color-mix(in oklab, var(--gold) 12%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--gold) 12%, transparent) 1px, transparent 1px);
+  background-size:
+    24px 24px,
+    24px 24px,
+    192px 192px,
+    192px 192px;
+}
+
+@utility noise-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.42'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+  opacity: 0.28;
+}
+
+@utility aurora {
+  background:
+    radial-gradient(50% 60% at 15% 20%, color-mix(in oklab, var(--maroon) 32%, transparent), transparent 70%),
+    radial-gradient(45% 55% at 85% 30%, color-mix(in oklab, var(--gold) 14%, transparent), transparent 70%),
+    radial-gradient(60% 60% at 50% 100%, color-mix(in oklab, var(--burgundy) 22%, transparent), transparent 70%);
+  animation: hnr-aurora 22s ease-in-out infinite alternate;
+}
+
+@utility glow-gold {
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--gold) 40%, transparent),
+    0 0 30px -6px color-mix(in oklab, var(--gold) 55%, transparent),
+    0 0 90px -30px color-mix(in oklab, var(--gold) 70%, transparent);
+}
+
+@utility link-underline {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    height: 1px;
+    width: 100%;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.55s var(--ease-luxe);
+  }
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+@utility display-xl {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 0.98;
+}
+
+@keyframes hnr-aurora {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.75;
+  }
+  100% {
+    transform: translate3d(0, -3%, 0) scale(1.12);
+    opacity: 1;
+  }
+}
+
+@keyframes hnr-sheen {
+  0% {
+    transform: translateX(-120%) skewX(-18deg);
+  }
+  100% {
+    transform: translateX(320%) skewX(-18deg);
+  }
+}
+
+@keyframes hnr-drift {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120px) translateX(24px);
+    opacity: 0;
+  }
+}
+
+@keyframes hnr-scan {
+  0% {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  50% {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  50.1% {
+    transform-origin: right;
+  }
+  100% {
+    transform: scaleX(0);
+    transform-origin: right;
+  }
+}
+
+@utility animate-sheen {
+  animation: hnr-sheen 1.4s var(--ease-luxe);
+}

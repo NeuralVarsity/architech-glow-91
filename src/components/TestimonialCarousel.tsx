@@ -15,7 +15,8 @@ export function TestimonialCarousel() {
 
   return (
     <div className="relative mt-14">
-      <div className="glass-panel relative overflow-hidden rounded-sm px-6 py-12 sm:px-14">
+      <div className="luxe-glass relative overflow-hidden rounded-sm px-6 py-12 shadow-[0_50px_100px_-40px_oklch(0.13_0.004_60/0.95)] sm:px-14">
+        <div className="pointer-events-none absolute inset-0 blueprint opacity-20" />
         <Quote className="absolute top-6 right-8 size-16 text-gold/10" />
         <AnimatePresence mode="wait" custom={dir}>
           <motion.blockquote
@@ -36,6 +37,9 @@ export function TestimonialCarousel() {
                 <span className="block truncate font-medium text-offwhite">{t.name}</span>
                 <span className="block truncate text-xs tracking-[0.16em] text-muted-foreground uppercase">
                   {t.role}
+                </span>
+                <span className="mt-1 block truncate text-[10px] tracking-[0.22em] text-gold/80 uppercase">
+                  {t.property}
                 </span>
               </span>
             </footer>

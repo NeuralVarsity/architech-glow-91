@@ -23,8 +23,14 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
         my.set(0);
       }}
       style={{ rotateX: rx, rotateY: ry, transformPerspective: 1100 }}
-      className="group relative overflow-hidden rounded-sm border border-gold/15 bg-card transition-shadow duration-500 hover:shadow-[var(--shadow-gold)]"
+      className="luxe-glass group relative overflow-hidden rounded-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_40px_80px_-32px_oklch(0.13_0.004_60/0.9),0_0_0_1px_oklch(0.78_0.13_85/0.35)]"
     >
+      {/* animated gold border sweep */}
+      <span className="pointer-events-none absolute inset-0 z-20 rounded-sm opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+        <span className="absolute inset-x-0 top-0 h-px animate-[hnr-sheen_2.2s_linear_infinite] bg-gradient-to-r from-transparent via-gold to-transparent" />
+        <span className="absolute inset-x-0 bottom-0 h-px animate-[hnr-sheen_2.2s_linear_infinite_reverse] bg-gradient-to-r from-transparent via-gold to-transparent" />
+      </span>
+
       <div className="relative aspect-4/3 overflow-hidden">
         <img
           src={project.image}
@@ -35,6 +41,8 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
           className="size-full object-cover transition-transform duration-[1.1s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/25 to-transparent" />
+        {/* glass reflection sweep */}
+        <span className="pointer-events-none absolute -inset-y-8 -left-1/3 w-1/3 -translate-x-full rotate-12 bg-gradient-to-r from-transparent via-offwhite/12 to-transparent transition-transform duration-[1.1s] ease-out group-hover:translate-x-[420%]" />
         <span className="absolute top-4 left-4 rounded-sm border border-gold/40 bg-charcoal/70 px-3 py-1 text-[10px] tracking-[0.24em] text-gold uppercase backdrop-blur-sm">
           {project.status}
         </span>

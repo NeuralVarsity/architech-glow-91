@@ -1,16 +1,17 @@
-import { Link } from "@tanstack/react-router";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useRef } from "react";
-import { TextReveal } from "./Reveal";
+import { MaskReveal } from "./Reveal";
+import { MagneticButton } from "./MagneticButton";
 import { LazyScene } from "./three/LazyScene";
 import heroFallback from "@/assets/hero-skyline.jpg";
 
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "22%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.85], [1, 0]);
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "26%"]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.06]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   return (
     <section ref={ref} className="relative isolate flex min-h-[100svh] items-center overflow-hidden">
@@ -22,27 +23,35 @@ export function Hero() {
         height={1080}
         className="absolute inset-0 -z-30 size-full object-cover opacity-50"
       />
-      <LazyScene name="city" className="absolute inset-0 -z-20 opacity-85" />
+      <LazyScene name="city" className="absolute inset-0 -z-20 opacity-90" />
       <div
         className="pointer-events-none absolute inset-0 -z-10"
         style={{ background: "var(--gradient-veil)" }}
       />
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_40%,transparent,oklch(0.13_0.004_60/0.85))]" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_40%,transparent,oklch(0.13_0.004_60/0.88))]" />
+      <div className="pointer-events-none absolute inset-0 -z-10 noise-overlay" />
+      <div className="pointer-events-none absolute inset-0 -z-10 blueprint opacity-[0.18]" />
 
-      <motion.div style={{ y, opacity }} className="mx-auto w-full max-w-7xl px-5 pt-28 pb-24 sm:px-8">
+      <motion.div style={{ y, opacity, scale }} className="mx-auto w-full max-w-7xl px-5 pt-28 pb-24 sm:px-8">
         <motion.p
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.15 }}
-          className="eyebrow"
+          className="eyebrow flex items-center gap-4"
         >
+          <span className="h-px w-12 bg-gold/60" />
           HNR Infra · Building Tomorrow
         </motion.p>
 
-        <h1 className="mt-6 max-w-5xl text-balance text-4xl font-medium leading-[1.04] sm:text-6xl lg:text-7xl">
-          <TextReveal text="Building Tomorrow's Landmarks" />
-          <span className="block text-gold-gradient">
-            <TextReveal text="Today" />
+        <h1 className="display-xl mt-7 max-w-5xl text-balance text-[2.6rem] tracking-[0.01em] sm:text-6xl lg:text-[5.4rem]">
+          <span className="block">
+            <MaskReveal text="Building Tomorrow's" />
+          </span>
+          <span className="mt-1 block">
+            <MaskReveal text="Landmarks" delay={0.34} />{" "}
+            <span className="text-gold italic">
+              <MaskReveal text="Today" delay={0.48} />
+            </span>
           </span>
         </h1>
 
@@ -50,7 +59,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.95 }}
-          className="mt-8 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg"
+          className="mt-9 max-w-xl text-pretty text-base leading-[1.9] tracking-wide text-muted-foreground sm:text-[1.05rem]"
         >
           Crafting premium residential, commercial and mixed-use developments with world-class design and
           uncompromising quality.
@@ -60,20 +69,12 @@ export function Hero() {
           initial={{ opacity: 0, y: 22 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 1.15 }}
-          className="mt-11 flex flex-wrap gap-4"
+          className="mt-12 flex flex-wrap gap-4"
         >
-          <Link
-            to="/projects"
-            className="rounded-sm bg-gold px-8 py-4 text-[11px] font-semibold tracking-[0.22em] text-charcoal uppercase transition-transform duration-400 hover:scale-105"
-          >
-            Explore Projects
-          </Link>
-          <Link
-            to="/contact"
-            className="rounded-sm border border-gold/50 px-8 py-4 text-[11px] font-semibold tracking-[0.22em] text-gold uppercase transition-colors duration-400 hover:bg-gold hover:text-charcoal"
-          >
+          <MagneticButton to="/projects">Explore Projects</MagneticButton>
+          <MagneticButton to="/contact" variant="ghost">
             Schedule Consultation
-          </Link>
+          </MagneticButton>
         </motion.div>
       </motion.div>
 

@@ -5,8 +5,15 @@ import * as THREE from "three";
 
 function Tower() {
   const group = useRef<THREE.Group>(null);
-  useFrame((_, delta) => {
-    if (group.current) group.current.rotation.y += delta * 0.18;
+  useFrame(({ pointer, clock }, delta) => {
+    if (!group.current) return;
+    group.current.rotation.y += delta * 0.16;
+    // responds to the mouse: subtle lean + lift
+    const targetX = -pointer.y * 0.22;
+    const targetZ = pointer.x * 0.1;
+    group.current.rotation.x += (targetX - group.current.rotation.x) * Math.min(delta * 2.2, 1);
+    group.current.rotation.z += (targetZ - group.current.rotation.z) * Math.min(delta * 2.2, 1);
+    group.current.position.y = -3.4 + Math.sin(clock.elapsedTime * 0.6) * 0.09;
   });
 
   const tiers = [
@@ -27,12 +34,26 @@ function Tower() {
         <group key={i} position={[0, t.y, 0]}>
           <mesh>
             <boxGeometry args={[t.w, t.h, t.w]} />
-            <meshStandardMaterial
-              color="#131315"
-              metalness={0.95}
-              roughness={0.18}
+            <meshPhysicalMaterial
+              color="#101012"
+              metalness={1}
+              roughness={0.06}
+              reflectivity={1}
+              clearcoat={1}
+              clearcoatRoughness={0.04}
               emissive="#5C1F24"
-              emissiveIntensity={0.22}
+              emissiveIntensity={0.26}
+            />
+          </mesh>
+          {/* reflective gold banding between tiers */}
+          <mesh position={[0, -t.h / 2 + 0.06, 0]}>
+            <boxGeometry args={[t.w * 1.06, 0.07, t.w * 1.06]} />
+            <meshStandardMaterial
+              color="#D4AF37"
+              metalness={1}
+              roughness={0.12}
+              emissive="#D4AF37"
+              emissiveIntensity={0.5}
             />
           </mesh>
           <lineSegments>
@@ -53,8 +74,9 @@ export default function TowerScene() {
   return (
     <Canvas dpr={[1, 1.6]} camera={{ position: [7, 3.5, 9], fov: 45 }} gl={{ antialias: true }}>
       <ambientLight intensity={0.35} />
-      <directionalLight position={[5, 8, 5]} intensity={1.4} color="#D4AF37" />
+      <directionalLight position={[5, 8, 5]} intensity={1.5} color="#FFC978" />
       <pointLight position={[-6, 2, -4]} intensity={30} color="#7A232A" distance={24} />
+      <pointLight position={[4, 6, 6]} intensity={22} color="#D4AF37" distance={26} />
       <Tower />
       <OrbitControls
         enablePan={false}

@@ -82,3 +82,35 @@ export function TextReveal({ text, className }: { text: string; className?: stri
     </span>
   );
 }
+
+/** Editorial line-mask reveal: each word slides out from behind its own mask. */
+export function MaskReveal({
+  text,
+  className,
+  delay = 0.2,
+  stagger = 0.075,
+}: {
+  text: string;
+  className?: string;
+  delay?: number;
+  stagger?: number;
+}) {
+  const words = text.split(" ");
+  return (
+    <span className={className}>
+      {words.map((w, i) => (
+        <span key={`${w}-${i}`} className="inline-block overflow-hidden pb-[0.12em] align-bottom">
+          <motion.span
+            className="inline-block"
+            initial={{ y: "115%", opacity: 0, filter: "blur(6px)" }}
+            animate={{ y: "0%", opacity: 1, filter: "blur(0px)" }}
+            transition={{ duration: 1.15, delay: delay + i * stagger, ease: [0.16, 1, 0.3, 1] }}
+          >
+            {w}
+            {i < words.length - 1 ? "\u00A0" : ""}
+          </motion.span>
+        </span>
+      ))}
+    </span>
+  );
+}
