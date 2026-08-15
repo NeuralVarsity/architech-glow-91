@@ -63,7 +63,7 @@ export function BuildingTomorrow() {
             <span className="block">
               <MaskReveal text="Building" />
             </span>
-            <span className="block text-gold-gradient">
+            <span className="block text-gold">
               <MaskReveal text="Tomorrow" delay={0.2} />
             </span>
           </h2>
